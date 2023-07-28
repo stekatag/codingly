@@ -1,0 +1,16 @@
+---
+import Container from "./container.astro";
+import Themeswitch from "./themeswitch.astro";
+---
+
+<Container class="mt-10 border-t border-gray-100 dark:border-gray-800">
+  <footer class="flex flex-col items-center">
+    <div class="text-sm text-center">
+      Copyright © {new Date().getFullYear()} Stefan Gogov. All rights reserved.
+    </div>
+
+    <div class="flex items-center justify-between mt-2">
+      <Themeswitch />
+    </div>
+  </footer>
+</Container>

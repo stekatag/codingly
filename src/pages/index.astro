@@ -1,0 +1,85 @@
+---
+import Container from "@components/container.astro";
+import Postlist from "@components/postlist.astro";
+import Link from "@components/ui/link.astro";
+import Layout from "@layouts/Layout.astro";
+import { latestPosts } from "@utils/content";
+// Use Astro.glob() to fetch all posts, and then sort them by date.
+// const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
+//   (a, b) =>
+//     new Date(b.frontmatter.publishDate).valueOf() -
+//     new Date(a.frontmatter.publishDate).valueOf()
+// );
+// console.log(posts[0].frontmatter.image);
+---
+
+<Layout title="">
+  <Container>
+    <header>
+      <!-- hero section with an image on the right -->
+      <div
+        class="mb-14 flex flex-col items-center justify-between gap-10 lg:flex-row">
+        <div class="flex flex-col items-start w-full lg:w-1/2">
+          <h1
+            class="mt-2 mb-3 text-3xl font-semibold tracking-tight text-center lg:leading-snug text-brand-primary lg:text-4xl dark:text-white">
+            Hi, I'm Stefan.
+          </h1>
+          <p class="mt-5 text-lg text-gray-500 dark:text-gray-400">
+            I'm a software engineer and a tech enthusiast. I love to build
+            things and learn new technologies.
+          </p>
+          <div class="flex flex-wrap mt-8 space-x-3">
+            <Link href="/blog">Github</Link>
+            <Link href="/about" style="outline">About me</Link>
+          </div>
+        </div>
+
+        <div>
+          <img
+            src="./src/assets/authors/stefan.jpg"
+            alt="Stefan's profile picture"
+            width={300}
+            height={300}
+            class="rounded-full"
+          />
+        </div>
+      </div>
+
+      <main>
+        <h2
+          class="mb-5 text-2xl font-semibold tracking-tight text-center lg:leading-snug text-brand-primary lg:text-3xl dark:text-white">
+          Latest posts
+          <div class="pt-8 grid gap-10 lg:gap-10 md:grid-cols-2">
+            {
+              latestPosts
+                .slice(0, 2)
+                .map((post) => (
+                  <Postlist
+                    post={post}
+                    aspect="landscape"
+                    preloadImage={true}
+                  />
+                ))
+            }
+          </div>
+          <div
+            class="grid gap-10 mt-10 lg:gap-10 md:grid-cols-2 xl:grid-cols-3">
+            {
+              latestPosts
+                .slice(0, 3)
+                .map((post) => <Postlist post={post} aspect="square" />)
+            }
+          </div>
+
+          <div class="flex justify-center mt-7 mb-7">
+            <a
+              href="/blog"
+              class="px-5 py-3 text-sm text-blue-600 transition rounded-md dark:text-blue-500 bg-blue-50 hover:bg-blue-100">
+              ← View all posts
+            </a>
+          </div>
+        </h2>
+      </main>
+    </header>
+  </Container>
+</Layout>

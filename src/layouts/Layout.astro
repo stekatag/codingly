@@ -1,0 +1,67 @@
+---
+import Footer from "@components/footer.astro";
+import Navbar from "@components/navbar.astro";
+import "@fontsource/inter/variable.css";
+import { checkImageUrl } from "@utils/all";
+import { SEO } from "astro-seo";
+
+export interface Props {
+  title?: string;
+  desc?: string;
+  ogimage?: string;
+}
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+
+const { title, desc, ogimage = "/opengraph.jpg" } = Astro.props;
+
+const resolvedOGImage = checkImageUrl(ogimage, Astro.site);
+
+const makeTitle = title
+  ? title + " | " + "Codingly"
+  : "Codingly — Blog for Developers";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <SEO
+      title={makeTitle}
+      description={desc ||
+        "Codingly is a blog for developers. We write about web development, programming, and software engineering."}
+      canonical={canonicalURL}
+      twitter={{
+        creator: "@stekatag",
+        site: "@stekatag",
+        card: "summary_large_image",
+      }}
+      openGraph={{
+        basic: {
+          url: canonicalURL,
+          type: "website",
+          title: `Codingly is a blog for developers`,
+          image: resolvedOGImage,
+        },
+        image: {
+          alt: "Codingly screenshot",
+        },
+      }}
+    />
+  </head>
+  <body>
+    <Navbar />
+    <slot />
+    <Footer />
+    <style is:global>
+      /* Improve Page speed */
+      /* https://css-tricks.com/almanac/properties/c/content-visibility/ */
+      img {
+        content-visibility: auto;
+      }
+    </style>
+  </body>
+</html>
