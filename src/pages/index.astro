@@ -51,31 +51,31 @@ import { latestPosts } from "@utils/content";
       <h2
         class="text-2xl pt-7 font-semibold tracking-tight text-center lg:leading-snug text-brand-primary lg:text-3xl dark:text-white">
         Latest posts
-        <div class="grid gap-10 pt-7 lg:gap-10 md:grid-cols-2">
-          {
-            latestPosts
-              .slice(0, 2)
-              .map((post) => (
-                <Postlist post={post} aspect="landscape" preloadImage={true} />
-              ))
-          }
-        </div>
-        <div class="grid gap-10 mt-10 lg:gap-10 md:grid-cols-2 xl:grid-cols-3">
-          {
-            latestPosts
-              .slice(0, 3)
-              .map((post) => <Postlist post={post} aspect="square" />)
-          }
-        </div>
-
-        <div class="flex justify-center mt-7 mb-7">
-          <a
-            href="/blog"
-            class="px-5 py-3 text-sm text-blue-600 transition rounded-md dark:text-purple-500 bg-purple-50 hover:bg-blue-200 dark:hover:bg-purple-200">
-            ← View all posts
-          </a>
-        </div>
       </h2>
+      <div class="grid gap-10 pt-7 lg:gap-10 md:grid-cols-2">
+        {
+          latestPosts
+            .slice(0, 2)
+            .map((post) => (
+              <Postlist post={post} aspect="landscape" preloadImage={true} />
+            ))
+        }
+      </div>
+      <div class="grid gap-10 mt-10 lg:gap-10 md:grid-cols-2 xl:grid-cols-3">
+        {
+          latestPosts
+            .slice(0, 3)
+            .map((post) => <Postlist post={post} aspect="square" />)
+        }
+      </div>
+
+      <div class="flex justify-center mt-7 mb-7">
+        <a
+          href="/blog"
+          class="px-5 py-3 text-sm text-blue-600 transition rounded-md dark:text-purple-500 bg-purple-50 hover:bg-blue-200 dark:hover:bg-purple-200">
+          ← View all posts
+        </a>
+      </div>
     </main>
   </Container>
 </Layout>
