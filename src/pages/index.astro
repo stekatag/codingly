@@ -2,8 +2,10 @@
 import Container from "@components/container.astro";
 import Postlist from "@components/postlist.astro";
 import Link from "@components/ui/link.astro";
+import CategoryPosts from "@components/categoryposts.astro";
 import Layout from "@layouts/Layout.astro";
 import { latestPosts } from "@utils/content";
+import { categories } from "@data/category";
 // Use Astro.glob() to fetch all posts, and then sort them by date.
 // const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
 //   (a, b) =>
@@ -16,7 +18,6 @@ import { latestPosts } from "@utils/content";
 <Layout title="">
   <Container>
     <header>
-      <!-- hero section with an image on the right -->
       <div
         class="mb-14 flex flex-col items-center justify-between gap-10 lg:flex-row">
         <div
@@ -76,6 +77,12 @@ import { latestPosts } from "@utils/content";
           ← View all posts
         </a>
       </div>
+
+      <h2
+        class="text-2xl pt-14 font-semibold tracking-tight text-center lg:leading-snug text-brand-primary lg:text-3xl dark:text-white">
+        Posts by category
+      </h2>
+      {categories?.map((category) => <CategoryPosts category={category} />)}
     </main>
   </Container>
 </Layout>
