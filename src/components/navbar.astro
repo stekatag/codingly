@@ -16,29 +16,29 @@ const leftmenu: Menu[] = [
     href: "/",
   },
   {
-    label: "About",
-    href: "/about",
+    label: "Blog",
+    href: "/blog",
   },
   {
-    label: "Contact",
-    href: "/contact",
+    label: "About",
+    href: "/about",
   },
 ];
 
 const rightmenu: Menu[] = [
   {
-    label: "Blog",
-    href: "/blog",
+    label: "Contact",
+    href: "/contact",
   },
   {
     label: "Github",
-    href: "https://github.com/web3templates/stablo-astro",
+    href: "https://github.com/stekatag",
     external: true,
     badge: "new",
   },
   {
-    label: "Download",
-    href: "https://web3templates.com/templates/stablo-minimal-blog-website-template",
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/stefan-gogov/",
     external: true,
   },
 ];
@@ -50,12 +50,10 @@ const mobilemenu: Menu[] = [...leftmenu, ...rightmenu];
   <nav>
     <div class="flex flex-wrap justify-between md:gap-10 md:flex-nowrap">
       <div
-        class="flex-col items-center justify-start order-1 hidden w-full md:flex md:flex-row md:justify-end md:w-auto md:order-none md:flex-1">
+        class="flex-col items-center justify-start order-1 hidden w-full md:flex md:flex-row md:justify-end md:w-auto md:order-none md:flex-1 gap-10">
         {
           leftmenu.map((item) => (
-            <a
-              href={item.href}
-              class="px-5 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-blue-500">
+            <a href={item.href} class="nav-link after:dark:bg-purple-500">
               {item.label}
             </a>
           ))
@@ -74,7 +72,7 @@ const mobilemenu: Menu[] = [...leftmenu, ...rightmenu];
         <button
           id="menu"
           aria-label="Toggle Menu"
-          class="px-2 py-1 ml-auto text-gray-500 rounded-md md:hidden focus:text-blue-500 focus:outline-none dark:text-gray-300">
+          class="px-2 py-1 ml-auto text-gray-500 rounded-md md:hidden focus:text-blue-500 dark:focus:text-purple-500 focus:outline-none dark:text-gray-300">
           <svg
             class="w-6 h-6 fill-current"
             xmlns="http://www.w3.org/2000/svg"
@@ -94,12 +92,10 @@ const mobilemenu: Menu[] = [...leftmenu, ...rightmenu];
           </svg>
         </button>
       </div><div
-        class="flex-col items-center justify-start order-2 hidden w-full md:flex md:flex-row md:w-auto md:flex-1 md:order-none">
+        class="flex-col gap-10 items-center justify-start order-2 hidden w-full md:flex md:flex-row md:w-auto md:flex-1 md:order-none">
         {
           rightmenu.map((item) => (
-            <a
-              href={item.href}
-              class="px-5 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-blue-500">
+            <a href={item.href} class="nav-link after:dark:bg-purple-500">
               {item.label}
             </a>
           ))
@@ -113,7 +109,7 @@ const mobilemenu: Menu[] = [...leftmenu, ...rightmenu];
           mobilemenu.map((item, index) => (
             <a
               href={item.href}
-              class="px-5 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-blue-500"
+              class="px-5 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-purple-500"
               target={item.external ? "_blank" : ""}
               rel={item.external ? "noopener" : ""}>
               {item.label}
@@ -124,6 +120,23 @@ const mobilemenu: Menu[] = [...leftmenu, ...rightmenu];
     </div>
   </nav>
 </Container>
+
+<style type="text/tailwindcss">
+  @tailwind utilities;
+
+  @layer utilities {
+    .nav-link {
+      @apply relative my-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-300;
+    }
+    .nav-link::after {
+      @apply content-[''] bg-blue-500 h-[3.5px] w-[0%] left-0 -bottom-[6px] rounded-md absolute duration-300;
+    }
+
+    .nav-link:hover::after {
+      @apply w-[100%];
+    }
+  }
+</style>
 
 <script is:inline>
   const menuButton = document.getElementById("menu");

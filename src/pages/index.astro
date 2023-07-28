@@ -19,14 +19,15 @@ import { latestPosts } from "@utils/content";
       <!-- hero section with an image on the right -->
       <div
         class="mb-14 flex flex-col items-center justify-between gap-10 lg:flex-row">
-        <div class="flex flex-col items-start w-full lg:w-1/2">
+        <div
+          class="flex flex-col items-start w-full lg:w-1/2 max-lg:items-center">
           <h1
             class="mt-2 mb-3 text-3xl font-semibold tracking-tight text-center lg:leading-snug text-brand-primary lg:text-4xl dark:text-white">
             Hi, I'm Stefan.
           </h1>
-          <p class="mt-5 text-lg text-gray-500 dark:text-gray-400">
-            I'm a software engineer and a tech enthusiast. I love to build
-            things and learn new technologies.
+          <p
+            class="text-lg text-gray-500 dark:text-gray-400 text-center md:px-10 lg:text-left lg:px-0">
+            Welcome to my blog. I'm a web developer enthusiast and photographer.
           </p>
           <div class="flex flex-wrap mt-8 space-x-3">
             <Link href="/blog">Github</Link>
@@ -34,52 +35,47 @@ import { latestPosts } from "@utils/content";
           </div>
         </div>
 
-        <div>
+        <figure>
           <img
             src="./src/assets/authors/stefan.jpg"
             alt="Stefan's profile picture"
             width={300}
             height={300}
-            class="rounded-full"
+            class="rounded-full shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px]"
           />
-        </div>
+        </figure>
       </div>
-
-      <main>
-        <h2
-          class="mb-5 text-2xl font-semibold tracking-tight text-center lg:leading-snug text-brand-primary lg:text-3xl dark:text-white">
-          Latest posts
-          <div class="pt-8 grid gap-10 lg:gap-10 md:grid-cols-2">
-            {
-              latestPosts
-                .slice(0, 2)
-                .map((post) => (
-                  <Postlist
-                    post={post}
-                    aspect="landscape"
-                    preloadImage={true}
-                  />
-                ))
-            }
-          </div>
-          <div
-            class="grid gap-10 mt-10 lg:gap-10 md:grid-cols-2 xl:grid-cols-3">
-            {
-              latestPosts
-                .slice(0, 3)
-                .map((post) => <Postlist post={post} aspect="square" />)
-            }
-          </div>
-
-          <div class="flex justify-center mt-7 mb-7">
-            <a
-              href="/blog"
-              class="px-5 py-3 text-sm text-blue-600 transition rounded-md dark:text-blue-500 bg-blue-50 hover:bg-blue-100">
-              ← View all posts
-            </a>
-          </div>
-        </h2>
-      </main>
     </header>
+
+    <main>
+      <h2
+        class="text-2xl pt-7 font-semibold tracking-tight text-center lg:leading-snug text-brand-primary lg:text-3xl dark:text-white">
+        Latest posts
+        <div class="grid gap-10 pt-7 lg:gap-10 md:grid-cols-2">
+          {
+            latestPosts
+              .slice(0, 2)
+              .map((post) => (
+                <Postlist post={post} aspect="landscape" preloadImage={true} />
+              ))
+          }
+        </div>
+        <div class="grid gap-10 mt-10 lg:gap-10 md:grid-cols-2 xl:grid-cols-3">
+          {
+            latestPosts
+              .slice(0, 3)
+              .map((post) => <Postlist post={post} aspect="square" />)
+          }
+        </div>
+
+        <div class="flex justify-center mt-7 mb-7">
+          <a
+            href="/blog"
+            class="px-5 py-3 text-sm text-blue-600 transition rounded-md dark:text-purple-500 bg-purple-50 hover:bg-blue-200 dark:hover:bg-purple-200">
+            ← View all posts
+          </a>
+        </div>
+      </h2>
+    </main>
   </Container>
 </Layout>
