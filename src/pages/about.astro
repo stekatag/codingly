@@ -11,37 +11,44 @@ import Link from "@components/ui/link.astro";
   <Container>
     <Pagetitle>
       <Fragment slot="title">About</Fragment>
-      <Fragment slot="desc">We are a small passionate team.</Fragment>
+      <Fragment slot="desc">Let me introduce myself</Fragment>
     </Pagetitle>
 
-    <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-12">
-      {
-        authors.slice(0, 3).map((item) => (
-          <div class="group">
-            <div class="w-full aspect-square">
-              <Image
-                src={item.image}
-                format="avif"
-                width={580}
-                height={580}
-                alt="Team"
-                class="w-full h-full object-cover rounded transition  group-hover:-translate-y-1 group-hover:shadow-xl"
-              />
-            </div>
+    <div
+      class="flex flex-col items-center justify-between gap-10 lg:flex-row mx-auto max-w-4xl mt-12">
+      <div class="object-cover aspect-square">
+        <Image
+          src="/stefan.jpg"
+          format="webp"
+          width={300}
+          height={300}
+          alt="Team"
+          class="object-cover rounded-full transition hover:-translate-y-1 hover:shadow-xl"
+        />
+      </div>
 
-            <div class="mt-4 text-center">
-              <h3 class="text-sm text-gray-500"> {item.name}</h3>
-            </div>
-          </div>
-        ))
-      }
+      <div class="max-w-lg">
+        <p
+          class="mb-5 text-lg text-gray-500 dark:text-gray-400 md:px-10 lg:px-0">
+          My name is Stefan Gogov, and I'm from Bulgaria. I live in Asenovgrad
+          which is a small town in Plovdiv Province. Programming is my true
+          passion and I cannot imagine life not doing it. I really enjoy solving
+          complex problems and developing software solutions. I'm also a
+          photography enthusiast and I try my best to capture anything
+          beautiful.
+        </p>
+
+        <p class="text-lg text-gray-500 dark:text-gray-400 md:px-10 lg:px-0">
+          Besides that, by creating this blog, I'm going to share all of my
+          experiences that would be helpful to you
+        </p>
+      </div>
     </div>
 
     <div class="mx-auto max-w-xl text-center mt-14">
       <p class="text-lg leading-relaxed text-gray-600">
-        We're a multi-cultural team from around the world! We come from diverse
-        backgrounds, bringing different personalities, experiences and skills to
-        the job. This is what makes our team so special.
+        Need assistance or collaboration? Reach out and get in touch! Together,
+        we can achieve greatness.
       </p>
       <div class="mt-8">
         <Link href="/contact" style="primary">Get in touch</Link>
