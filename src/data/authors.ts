@@ -26,4 +26,10 @@ export const authors: Props[] = [
     image: "./src/assets/authors/erika.webp",
     bio: "Erika Oliver is a successful entrepreuner. She is the founder of Acme Inc, a bootstrapped business that builds affordable SaaS tools for local news, indie publishers, and other small businesses.",
   },
+  {
+    name: "Stefan Gogov",
+    slug: "stefan-gogov",
+    image: "/stefan.jpg",
+    bio: "Stefan is a programming enthusiast from Bulgaria, residing in Asenovgrad, who has a true passion for solving complex problems and developing software solutions. Through his blog, he aims to share his experiences and offer helpful insights to others.",
+  }
 ];
