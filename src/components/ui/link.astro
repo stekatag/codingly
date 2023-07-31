@@ -1,9 +1,9 @@
 ---
 interface Props {
   href: string;
-  size?: "md" | "lg";
+  size?: "md" | "lg" | "unset";
   block?: boolean;
-  style?: "outline" | "primary" | "inverted" | "muted";
+  style?: "outline" | "primary" | "inverted" | "underline" | "muted";
   class?: string;
   [x: string]: any;
 }
@@ -20,6 +20,7 @@ const {
 const sizes = {
   lg: "px-5 py-2.5",
   md: "px-4 py-2",
+  unset: "",
 };
 
 const styles = {
@@ -28,6 +29,7 @@ const styles = {
   primary:
     "bg-black text-white hover:bg-gray-800 hover:shadow-xl  border-2 border-transparent dark:bg-white dark:text-black dark:hover:bg-gray-200",
   inverted: "bg-white text-black hover:shadow-xl  border-2 border-transparent",
+  underline: "nav-link after:dark:bg-purple-500",
   muted:
     "bg-gray-100 hover:bg-gray-200 hover:shadow-xl  border-2 border-transparent",
 };
@@ -45,3 +47,20 @@ const styles = {
   ]}
   ><slot />
 </a>
+
+<style type="text/tailwindcss">
+  @tailwind utilities;
+
+  @layer utilities {
+    .nav-link {
+      @apply relative my-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-300;
+    }
+    .nav-link::after {
+      @apply content-[''] bg-blue-500 h-[3.5px] w-[0%] left-0 -bottom-[6px] rounded-md absolute duration-300;
+    }
+
+    .nav-link:hover::after {
+      @apply w-[100%];
+    }
+  }
+</style>

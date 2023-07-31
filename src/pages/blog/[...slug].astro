@@ -40,7 +40,9 @@ const category = categories.find(
   <Container>
     <div class="max-w-screen-md mx-auto">
       <div class="text-center">
-        <Label theme={category.color}>{category.title}</Label>
+        <a href={`/category/${category.slug}`}>
+          <Label theme={category.color}>{category.title}</Label>
+        </a>
       </div>
 
       <h1
@@ -66,9 +68,11 @@ const category = categories.find(
           </div>
 
           <div>
-            <p class="text-gray-800 dark:text-gray-400">
-              {author.name}
-            </p>
+            <a href={`/author/${author.slug}`}>
+              <p class="text-gray-800 dark:text-gray-400">
+                {author.name}
+              </p>
+            </a>
             <div class="flex items-center space-x-2 text-sm">
               <time
                 class="text-gray-500 dark:text-gray-400"
