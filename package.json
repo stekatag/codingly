@@ -32,6 +32,6 @@
     "@tailwindcss/line-clamp": "^0.4.4",
     "@tailwindcss/typography": "^0.5.9",
     "classnames": "^2.3.2",
-    "sharp": "^0.32.4"
+    "sharp": "^0.32.6"
   }
 }
