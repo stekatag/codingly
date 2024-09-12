@@ -1,19 +1,19 @@
 ---
 const { author } = Astro.props;
+
+const imagePath = `${import.meta.env.BASE_URL}src/assets/authors/${author.image}`;
 ---
 
 <div class="px-8 py-8 mt-3 text-gray-500 rounded-2xl bg-gray-50 dark:bg-gray-900 dark:text-gray-400">
   <div class="flex flex-wrap items-start gap-3 sm:flex-nowrap sm:gap-6">
     <div class="relative flex-shrink-0 w-24 h-24 mt-1">
-      {
-        author.image && (
-          <img
-            src={author.image}
-            alt="Author Photo"
-            class="w-full h-full object-cover rounded-full"
-          />
-        )
-      }
+      {author.image && (
+        <img
+          src={imagePath} 
+          alt="Author Photo"
+          class="w-full h-full object-cover rounded-full"
+        />
+      )}
     </div>
     <div>
       <div>
