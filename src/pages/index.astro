@@ -6,6 +6,7 @@ import CategoryPosts from "@components/categoryposts.astro";
 import Layout from "@layouts/Layout.astro";
 import { latestPosts } from "@utils/content";
 import { categories } from "@data/category";
+import stefanLogo from "@assets/authors/stefan.webp";
 // Use Astro.glob() to fetch all posts, and then sort them by date.
 // const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
 //   (a, b) =>
@@ -38,7 +39,7 @@ import { categories } from "@data/category";
 
         <figure>
           <img
-            src="/stefan.jpg"
+            src={stefanLogo.src}
             alt="Stefan's profile picture"
             width={300}
             height={300}

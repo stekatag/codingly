@@ -1,5 +1,4 @@
 ---
-import { Image, Picture } from "@astrojs/image/components";
 import Authorcard from "@components/authorcard.astro";
 import Container from "@components/container.astro";
 import Label from "@components/ui/label.astro";
@@ -55,13 +54,11 @@ const category = categories.find(
           <div class="relative flex-shrink-0 w-10 h-10">
             {
               author.image && (
-                <Image
+                <img
                   src={author.image}
                   alt="Author Photo"
-                  width={80}
-                  height={80}
-                  loading="eager"
-                  class="rounded-full"
+                  loading="lazy"
+                  class="w-full h-full object-cover rounded-full"
                 />
               )
             }
@@ -94,11 +91,8 @@ const category = categories.find(
     class="relative z-0 max-w-screen-lg mx-auto overflow-hidden lg:rounded-lg aspect-video">
     {
       post.data.image && (
-        <Picture
+        <img
           src={post.data.image}
-          widths={[200, 400, 800]}
-          sizes="(max-width: 640px) 90vw, 480px"
-          aspectRatio="16:9"
           width={1024}
           height={576}
           alt="Thumbnail"

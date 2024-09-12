@@ -13,6 +13,8 @@ module.exports = {
         sans: ["InterVariable", "Inter", ...defaultTheme.fontFamily.sans],
       },
       aspectRatio: {
+        "16/9": "16 / 9",
+        "1/1": "1 / 1",
         "4/3": "4 / 3",
         "3/2": "3 / 2",
         "2/3": "2 / 3",

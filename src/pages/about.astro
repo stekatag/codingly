@@ -1,10 +1,9 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
-import { Image } from "@astrojs/image/components";
-import { authors } from "@data/authors";
 import Pagetitle from "@components/pagetitle.astro";
 import Link from "@components/ui/link.astro";
+import stefanLogo from "@assets/authors/stefan.webp";
 ---
 
 <Layout title="About">
@@ -17,9 +16,8 @@ import Link from "@components/ui/link.astro";
     <div
       class="flex flex-col items-center justify-between gap-10 lg:flex-row mx-auto max-w-4xl mt-12">
       <div class="object-cover aspect-square">
-        <Image
-          src="/stefan.jpg"
-          format="webp"
+        <img
+          src={stefanLogo.src}
           width={300}
           height={300}
           alt="Team"
