@@ -14,7 +14,6 @@ const author = authors.find((item) => item.slug === post.data.author) as Author;
 const category = categories.find(
   (item) => item.slug === post.data.category
 ) as Category;
-const imagePath = `${import.meta.env.BASE_URL}src/assets/authors/${author.image}`;
 ---
 
 <div class="cursor-pointer group">
@@ -74,7 +73,7 @@ const imagePath = `${import.meta.env.BASE_URL}src/assets/authors/${author.image}
         {
           author.image && (
           <img
-            src={imagePath}
+            src={author.image}
             alt="Author Photo"
             loading="lazy"
             class="w-full h-full object-cover rounded-full"
