@@ -54,7 +54,7 @@ collections:
 
   - name: "authors"
     label: "Authors"
-    folder: "src/data/authors"
+    folder: "src/data/authors.ts"
     create: true
     slug: "{{slug}}"
     fields:
@@ -65,7 +65,7 @@ collections:
 
   - name: "categories"
     label: "Categories"
-    folder: "src/data/categories"
+    folder: "src/data/category.ts"
     create: true
     slug: "{{slug}}"
     fields:
