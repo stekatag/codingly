@@ -1,0 +1,80 @@
+backend:
+  name: git-gateway
+  branch: main
+
+publish_mode: editorial_workflow
+
+media_folder: "src/assets" # Media files will be stored in the repo under src/assets
+public_folder: "/assets" # The src attribute for uploaded media will begin with /assets
+
+collections:
+  - name: "blog"
+    label: "Blog"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {
+          label: "Layout",
+          name: "layout",
+          widget: "hidden",
+          default: "../../src/pages/blog/[...slug].astro",
+        }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Excerpt", name: "excerpt", widget: "string" }
+      - { label: "Publish Date", name: "publishDate", widget: "datetime" }
+      - { label: "Hero Image", name: "image", widget: "image" }
+      - {
+          label: "Category",
+          name: "category",
+          widget: "relation",
+          collection: "categories",
+          search_fields: ["title"],
+          value_field: "slug",
+          display_fields: ["title"],
+        }
+      - {
+          label: "Author",
+          name: "author",
+          widget: "relation",
+          collection: "authors",
+          search_fields: ["name"],
+          value_field: "slug",
+          display_fields: ["name"],
+        }
+      - {
+          label: "Tags",
+          name: "tags",
+          widget: "list",
+          allow_add: true,
+          label_singular: "Tag",
+          field: { label: "Tag", name: "tag", widget: "string" },
+        }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "authors"
+    label: "Authors"
+    folder: "src/data/authors"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Photo", name: "image", widget: "image" }
+      - { label: "Bio", name: "bio", widget: "text" }
+
+  - name: "categories"
+    label: "Categories"
+    folder: "src/data/categories"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - {
+          label: "Color",
+          name: "color",
+          widget: "select",
+          options: ["green", "blue", "orange", "purple", "pink"],
+        }
+      - { label: "Description", name: "description", widget: "text" }
