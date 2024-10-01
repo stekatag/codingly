@@ -4,7 +4,7 @@ backend:
 
 publish_mode: editorial_workflow
 
-media_folder: "src/assets" # Media files will be stored in the repo under src/assets
+media_folder: "public/assets" # Media files will be stored in the repo under src/assets
 public_folder: "/assets" # The src attribute for uploaded media will begin with /assets
 
 collections:
@@ -14,12 +14,6 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - {
-          label: "Layout",
-          name: "layout",
-          widget: "hidden",
-          default: "../../src/pages/blog/[...slug].astro",
-        }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Excerpt", name: "excerpt", widget: "string" }
       - {

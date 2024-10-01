@@ -1,5 +1,4 @@
 ---
-layout: ../../src/pages/blog/[...slug].astro
 title: Random post
 excerpt: brat
 publishDate: "2024-10-01T20:47:00+03:00"
