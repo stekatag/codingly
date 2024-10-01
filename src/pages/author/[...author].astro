@@ -5,8 +5,8 @@ import Postlist from "@components/postlist.astro";
 import Layout from "@layouts/Layout.astro";
 import { latestPosts } from "@utils/content";
 
-import authors from "@data/authors.json";
-import type { Props as Author } from "@data/author-types";
+import authors from "@data/authors/authors.json";
+import type { Props as Author } from "@data/authors/author-types";
 
 export function getStaticPaths() {
   const map = {};

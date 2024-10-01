@@ -2,14 +2,14 @@
 import Authorcard from "@components/authorcard.astro";
 import Container from "@components/container.astro";
 import Label from "@components/ui/label.astro";
-import  authors from "@data/authors.json";
-import  categories  from "@data/categories.json";
+import  authors from "@data/authors/authors.json";
+import  categories  from "@data/categories/categories.json";
 import Layout from "@layouts/Layout.astro";
 import { getFormattedDate } from "@utils/all";
 import { CollectionEntry, getCollection } from "astro:content";
 
-import type { Props as Author } from "@data/author-types";
-import type { Props as Category } from "@data/category-types";
+import type { Props as Author } from "@data/authors/author-types";
+import type { Props as Category } from "@data/categories/category-types";
 
 type Props = CollectionEntry<"blog">;
 
