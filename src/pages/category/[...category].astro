@@ -5,8 +5,8 @@ import Postlist from "@components/postlist.astro";
 import Layout from "@layouts/Layout.astro";
 import { latestPosts } from "@utils/content";
 
-import  categories  from "@data/categories/categories.json";
-import type { Props as Category } from "@data/categories/category-types";
+import  categories  from "@data/categories.json";
+import type { Props as Category } from "@data/category-types";
 
 export function getStaticPaths() {
   const map = {};

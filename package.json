@@ -4,11 +4,15 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "dev": "npm-run-all --parallel combine:json dev:astro",
+    "start": "npm-run-all --parallel combine:json dev:astro",
+    "build": "npm-run-all combine:json build:astro",
+    "preview": "npm-run-all combine:json preview:astro",
+    "combine:json": "node scripts/combine-json.js",
+    "dev:astro": "astro dev",
+    "build:astro": "astro build",
+    "preview:astro": "astro preview",
+    "watch:json": "node scripts/file-watcher.js"
   },
   "dependencies": {
     "@astrojs/alpinejs": "^0.4.0",
@@ -32,7 +36,9 @@
   "devDependencies": {
     "@tailwindcss/line-clamp": "^0.4.4",
     "@tailwindcss/typography": "^0.5.15",
+    "chokidar": "^4.0.1",
     "classnames": "^2.5.1",
+    "npm-run-all": "^4.1.5",
     "sharp": "^0.33.5"
   }
 }
