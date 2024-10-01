@@ -26,7 +26,7 @@ collections:
           label: "Publish Date",
           name: "publishDate",
           widget: "datetime",
-          format: "YYYY-MM-DDTHH:mm:ssZ",
+          format: "'YYYY-MM-DDTHH:mm:ssZ'",
         }
       - { label: "Hero Image", name: "image", widget: "image" }
       - {
