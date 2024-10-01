@@ -54,7 +54,7 @@ collections:
 
   - name: "authors"
     label: "Authors"
-    folder: "src/data"
+    folder: "src/data/authors"
     extension: "json"
     format: "json"
     create: true
@@ -67,7 +67,7 @@ collections:
 
   - name: "categories"
     label: "Categories"
-    folder: "src/data"
+    folder: "src/data/categories"
     extension: "json"
     format: "json"
     create: true
