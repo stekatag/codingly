@@ -22,7 +22,12 @@ collections:
         }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Excerpt", name: "excerpt", widget: "string" }
-      - { label: "Publish Date", name: "publishDate", widget: "datetime" }
+      - {
+          label: "Publish Date",
+          name: "publishDate",
+          widget: "datetime",
+          format: "YYYY-MM-DDTHH:mm:ssZ",
+        }
       - { label: "Hero Image", name: "image", widget: "image" }
       - {
           label: "Category",
