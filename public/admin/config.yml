@@ -59,6 +59,7 @@ collections:
     format: "json"
     create: true
     slug: "{{slug}}"
+    identifier_field: "name"
     fields:
       - { label: "Name", name: "name", widget: "string" }
       - { label: "Slug", name: "slug", widget: "string" }
@@ -72,6 +73,7 @@ collections:
     format: "json"
     create: true
     slug: "{{slug}}"
+    identifier_field: "title"
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Slug", name: "slug", widget: "string" }
