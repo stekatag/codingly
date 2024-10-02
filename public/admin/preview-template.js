@@ -1,11 +1,31 @@
 import CMS from "decap-cms-app";
 import React from "react";
 
-// Importing necessary components and utilities
-import Authorcard from "../../src/components/authorcard.astro";
-import Container from "../../src/components/container.astro";
-import Label from "../../src/components/ui/label.astro";
-import Layout from "../../src/layouts/Layout.astro";
+// Replace Astro components with React-compatible components
+const Authorcard = ({ author }) => (
+  <div className="author-card">
+    <img src={author.image} alt={author.name} className="author-image" />
+    <p>{author.name}</p>
+    <p>{author.bio}</p>
+  </div>
+);
+
+const Container = ({ children }) => <div className="container">{children}</div>;
+
+const Label = ({ theme, children }) => (
+  <span className={`label label-${theme}`}>{children}</span>
+);
+
+const Layout = ({ title, desc, ogimage, children }) => (
+  <div className="layout">
+    <header>
+      <h1>{title}</h1>
+      <p>{desc}</p>
+      {ogimage && <img src={ogimage} alt={title} />}
+    </header>
+    <main>{children}</main>
+  </div>
+);
 
 // Data from authors and categories
 import authors from "../../src/data/authors.json";
