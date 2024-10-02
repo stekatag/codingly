@@ -15,14 +15,5 @@
     <script is:inline>
       netlifyIdentity.on("logout", () => location.reload());
     </script>
-
-    <script>
-      // @ts-expect-error CMS is defined globally
-      // eslint-disable-next-line
-      CMS.registerPreviewStyle("/admin/global.css");
-    </script>
-
-    <!-- Only showing body in preview panel -->
-    <script src="/admin/preview-template.js"></script>
   </body>
 </html>
