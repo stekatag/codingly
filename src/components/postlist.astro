@@ -3,9 +3,9 @@ import cx from "classnames";
 
 import Label from "@components/ui/label.astro";
 import type { Props as Author } from "@data/author-types";
-import  authors  from "@data/authors.json";
+import authors from "@data/authors.json";
 import type { Props as Category } from "@data/category-types";
-import categories  from "@data/categories.json";
+import categories from "@data/categories.json";
 import { getFormattedDate } from "@utils/all";
 import { Icon } from "astro-icon/components";
 
@@ -16,21 +16,21 @@ const category = categories.find(
 ) as Category;
 ---
 
-<div class="cursor-pointer group">
+<article class="cursor-pointer group">
   <div
     class={cx(
       "relative overflow-hidden transition-all bg-gray-100 rounded-md dark:bg-gray-800 hover:scale-105",
-      aspect === "landscape" ? "aspect-4/3" : "aspect-1/1" 
+      aspect === "landscape" ? "aspect-4/3" : "aspect-1/1"
     )}>
     <a href={"/blog/" + post.slug}>
       {
         post.data.image ? (
-            <img
-              src={post.data.image}
-              alt="Thumbnail"
-              loading={preloadImage ? "eager" : "lazy"}
-              class="absolute top-0 left-0 w-full h-full object-cover rounded-md"
-            />
+          <img
+            src={post.data.image}
+            alt="Thumbnail"
+            loading={preloadImage ? "eager" : "lazy"}
+            class="absolute top-0 left-0 w-full h-full object-cover rounded-md"
+          />
         ) : (
           <span class="absolute w-16 h-16 text-gray-200 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
             <Icon
@@ -72,12 +72,12 @@ const category = categories.find(
       <div class="relative flex-shrink-0 w-5 h-5">
         {
           author.image && (
-          <img
-            src={author.image}
-            alt="Author Photo"
-            loading="lazy"
-            class="w-full h-full object-cover rounded-full"
-          />
+            <img
+              src={author.image}
+              alt="Author Photo"
+              loading="lazy"
+              class="w-full h-full object-cover rounded-full"
+            />
           )
         }
       </div>
@@ -90,4 +90,4 @@ const category = categories.find(
       {getFormattedDate(post.data.publishDate)}
     </time>
   </div>
-</div>
+</article>

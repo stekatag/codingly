@@ -5,7 +5,7 @@ import Link from "@components/ui/link.astro";
 import CategoryPosts from "@components/categoryposts.astro";
 import Layout from "@layouts/Layout.astro";
 import { latestPosts } from "@utils/content";
-import  categories  from "@data/categories.json";
+import categories from "@data/categories.json";
 import stefanLogo from "/public/authors/stefan.webp";
 // Use Astro.glob() to fetch all posts, and then sort them by date.
 // const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
@@ -31,10 +31,12 @@ import stefanLogo from "/public/authors/stefan.webp";
             class="text-lg text-gray-500 dark:text-gray-400 text-center md:px-10 lg:text-left lg:px-0">
             Welcome to my blog. I'm a web developer enthusiast and photographer.
           </p>
-          <div class="flex flex-wrap mt-8 space-x-3">
+          <nav
+            class="flex flex-wrap mt-8 space-x-3"
+            aria-label="Call to action Navigation">
             <Link href="/blog">Github</Link>
             <Link href="/about" style="outline">About me</Link>
-          </div>
+          </nav>
         </div>
 
         <figure>
@@ -50,41 +52,45 @@ import stefanLogo from "/public/authors/stefan.webp";
     </header>
 
     <main>
-      <h2
-        class="text-2xl pt-7 font-semibold tracking-tight text-center lg:leading-snug text-brand-primary lg:text-3xl dark:text-white">
-        Latest posts
-      </h2>
-      <div class="grid gap-10 pt-7 lg:gap-10 md:grid-cols-2">
-        {
-          latestPosts
-            .slice(0, 2)
-            .map((post) => (
-              <Postlist post={post} aspect="landscape" preloadImage={true} />
-            ))
-        }
-      </div>
-      <div class="grid gap-10 mt-10 lg:gap-10 md:grid-cols-2 xl:grid-cols-3">
-        {
-          latestPosts
-            .slice(2, 5)
-            .map((post) => <Postlist post={post} aspect="square" />)
-        }
-      </div>
+      <section aria-labelledby="latest-posts">
+        <h2
+          class="text-2xl pt-7 font-semibold tracking-tight text-center lg:leading-snug text-brand-primary lg:text-3xl dark:text-white">
+          Latest posts
+        </h2>
+        <div class="grid gap-10 pt-7 lg:gap-10 md:grid-cols-2">
+          {
+            latestPosts
+              .slice(0, 2)
+              .map((post) => (
+                <Postlist post={post} aspect="landscape" preloadImage={true} />
+              ))
+          }
+        </div>
+        <div class="grid gap-10 mt-10 lg:gap-10 md:grid-cols-2 xl:grid-cols-3">
+          {
+            latestPosts
+              .slice(2, 5)
+              .map((post) => <Postlist post={post} aspect="square" />)
+          }
+        </div>
 
-      <div class="flex justify-center mt-7 mb-7">
-        <a
-          href="/blog"
-          class="px-5 py-3 text-sm text-blue-600 transition rounded-md dark:text-purple-500 bg-purple-50 hover:bg-blue-200 dark:hover:bg-purple-200">
-          ← View all posts
-        </a>
-      </div>
+        <div class="flex justify-center mt-7 mb-7">
+          <a
+            href="/blog"
+            class="px-5 py-3 text-sm text-blue-600 transition rounded-md dark:text-purple-500 bg-purple-50 hover:bg-blue-200 dark:hover:bg-purple-200">
+            ← View all posts
+          </a>
+        </div>
+      </section>
 
-      <h2
-        class="text-2xl pt-14 font-semibold tracking-tight text-center lg:leading-snug text-brand-primary lg:text-3xl dark:text-white">
-        Posts by category
-      </h2>
+      <section aria-labelledby="posts-by-category">
+        <h2
+          class="text-2xl pt-14 font-semibold tracking-tight text-center lg:leading-snug text-brand-primary lg:text-3xl dark:text-white">
+          Posts by category
+        </h2>
 
-      {categories?.map((category) => <CategoryPosts category={category} />)}
+        {categories?.map((category) => <CategoryPosts category={category} />)}
+      </section>
     </main>
   </Container>
 </Layout>

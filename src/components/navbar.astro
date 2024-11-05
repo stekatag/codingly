@@ -46,20 +46,24 @@ const mobilemenu: Menu[] = [...leftmenu, ...rightmenu];
 ---
 
 <Container>
-  <nav>
-    <div class="flex flex-wrap justify-between md:gap-10 md:flex-nowrap">
-      <div
+  <nav aria-label="Main navigation">
+    <ul class="flex flex-wrap justify-between md:gap-10 md:flex-nowrap">
+      <li
         class="flex-col items-center justify-start order-1 hidden w-full md:flex md:flex-row md:justify-end md:w-auto md:order-none md:flex-1 gap-10">
         {
           leftmenu.map((item) => (
-            <Link href={item.href} style="underline" size="unset">
-              {item.label}
-            </Link>
+            <ul>
+              <li>
+                <Link href={item.href} style="underline" size="unset">
+                  {item.label}
+                </Link>
+              </li>
+            </ul>
           ))
         }
-      </div>
+      </li>
 
-      <div class="flex items-center justify-between w-full md:w-auto">
+      <li class="flex items-center justify-between w-full md:w-auto">
         <a class="w-28 dark:hidden" href="/">
           <img src="/logo.svg" alt="Logo" />
         </a>
@@ -90,44 +94,50 @@ const mobilemenu: Menu[] = [...leftmenu, ...rightmenu];
             ></path>
           </svg>
         </button>
-      </div>
+      </li>
 
-      <div
+      <li
         class="flex-col gap-10 items-center justify-start order-2 hidden w-full md:flex md:flex-row md:w-auto md:flex-1 md:order-none">
         {
           rightmenu.map((item) => (
-            <Link href={item.href} style="underline" size="unset">
-              {item.label}
-            </Link>
+            <ul>
+              <li>
+                <Link href={item.href} style="underline" size="unset">
+                  {item.label}
+                </Link>
+              </li>
+            </ul>
           ))
         }
-      </div>
-    </div>
+      </li>
+    </ul>
 
-    <div class="navmenu-toggle hidden">
-      <div
+    <nav class="navmenu-toggle hidden">
+      <ul
         class="flex flex-col items-center justify-start order-2 w-full md:hidden">
         {
           mobilemenu.map((item, index) => (
-            <a
-              href={item.href}
-              class="px-5 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-purple-500"
-              target={item.external ? "_blank" : ""}
-              rel={item.external ? "noopener" : ""}>
-              {item.label}
-            </a>
+            <li class="px-5 py-3 ">
+              <a
+                href={item.href}
+                class=" font-medium text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-purple-500"
+                target={item.external ? "_blank" : ""}
+                rel={item.external ? "noopener" : ""}>
+                {item.label}
+              </a>
+            </li>
           ))
         }
-      </div>
-    </div>
+      </ul>
+    </nav>
   </nav>
 </Container>
 
 <script is:inline>
-const menuButton = document.getElementById("menu");
-menuButton.addEventListener("click", () => {
-  [...document.querySelectorAll(".navmenu-toggle")].forEach((Element) => {
-    Element.classList.toggle("hidden");
+  const menuButton = document.getElementById("menu");
+  menuButton.addEventListener("click", () => {
+    [...document.querySelectorAll(".navmenu-toggle")].forEach((Element) => {
+      Element.classList.toggle("hidden");
+    });
   });
-});
 </script>
