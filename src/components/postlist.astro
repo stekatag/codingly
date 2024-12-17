@@ -8,6 +8,7 @@ import type { Props as Category } from "@data/category-types";
 import categories from "@data/categories.json";
 import { getFormattedDate } from "@utils/all";
 import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
 
 const { post, aspect, preloadImage } = Astro.props;
 const author = authors.find((item) => item.slug === post.data.author) as Author;
@@ -25,11 +26,14 @@ const category = categories.find(
     <a href={"/blog/" + post.slug}>
       {
         post.data.image ? (
-          <img
+          <Image
             src={post.data.image}
-            alt="Thumbnail"
+            alt={post.data.title}
+            width={400}
+            height={300}
             loading={preloadImage ? "eager" : "lazy"}
             class="absolute top-0 left-0 w-full h-full object-cover rounded-md"
+            title={post.data.title}
           />
         ) : (
           <span class="absolute w-16 h-16 text-gray-200 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
@@ -43,12 +47,14 @@ const category = categories.find(
     </a>
   </div>
 
-  <a href={`/category/${category.slug}`}>
+  <a
+    href={`/category/${category.slug}`}
+    title={`View all posts in ${category.title}`}>
     <Label theme={category.color}>{category.title}</Label>
   </a>
   <h2
     class="mt-2 text-lg font-semibold tracking-normal text-brand-primary dark:text-white">
-    <a href={"/blog/" + post.slug}>
+    <a href={"/blog/" + post.slug} title={post.data.title}>
       <span
         class="bg-gradient-to-r from-blue-200 to-blue-100 dark:from-purple-800 dark:to-purple-900 bg-[length:0px_10px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_10px]">
         {post.data.title}
@@ -60,7 +66,9 @@ const category = categories.find(
     {
       post.data.excerpt && (
         <p class="mt-2 text-sm text-gray-500 dark:text-gray-400 line-clamp-3">
-          <a href={"/blog/" + post.slug}>{post.data.excerpt}</a>
+          <a href={"/blog/" + post.slug} title={post.data.title}>
+            {post.data.excerpt}
+          </a>
         </p>
       )
     }
@@ -72,16 +80,21 @@ const category = categories.find(
       <div class="relative flex-shrink-0 w-5 h-5">
         {
           author.image && (
-            <img
+            <Image
               src={author.image}
-              alt="Author Photo"
-              loading="lazy"
+              width={50}
+              height={50}
+              alt={author.name}
+              loading={preloadImage ? "eager" : "lazy"}
               class="w-full h-full object-cover rounded-full"
+              title={author.name}
             />
           )
         }
       </div>
-      <a href={`/author/${author.slug}`}>
+      <a
+        href={`/author/${author.slug}`}
+        title={`View all posts by ${author.name}`}>
         <span class="text-sm">{author.name}</span>
       </a>
     </div>

@@ -4,6 +4,7 @@ import Container from "@components/container.astro";
 import Pagetitle from "@components/pagetitle.astro";
 import Link from "@components/ui/link.astro";
 import stefanLogo from "/public/authors/stefan.webp";
+import { Image } from "astro:assets";
 ---
 
 <Layout title="About">
@@ -16,10 +17,12 @@ import stefanLogo from "/public/authors/stefan.webp";
     <div
       class="flex flex-col items-center justify-between gap-10 lg:flex-row mx-auto max-w-4xl mt-12">
       <div class="object-cover aspect-square">
-        <img
-          src={stefanLogo.src}
+        <Image
+          src={stefanLogo}
           width={300}
           height={300}
+          loading="eager"
+          title="Stefan Gogov"
           alt="Team"
           class="object-cover rounded-full transition hover:-translate-y-1 hover:shadow-xl"
         />
@@ -44,7 +47,7 @@ import stefanLogo from "/public/authors/stefan.webp";
     </div>
 
     <div class="mx-auto max-w-xl text-center mt-14">
-      <p class="text-lg leading-relaxed text-gray-600">
+      <p class="text-lg leading-relaxed text-gray-500">
         Need assistance or collaboration? Reach out and get in touch! Together,
         we can achieve greatness.
       </p>

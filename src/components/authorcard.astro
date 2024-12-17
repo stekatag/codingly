@@ -1,17 +1,26 @@
 ---
+import { Image } from "astro:assets";
+
 const { author } = Astro.props;
 ---
 
-<div class="px-8 py-8 mt-3 text-gray-500 rounded-2xl bg-gray-50 dark:bg-gray-900 dark:text-gray-400">
+<div
+  class="px-8 py-8 mt-3 text-gray-500 rounded-2xl bg-gray-50 dark:bg-gray-900 dark:text-gray-400">
   <div class="flex flex-wrap items-start gap-3 sm:flex-nowrap sm:gap-6">
     <div class="relative flex-shrink-0 w-24 h-24 mt-1">
-      {author.image && (
-        <img
-          src={author.image} 
-          alt="Author Photo"
-          class="w-full h-full object-cover rounded-full"
-        />
-      )}
+      {
+        author.image && (
+          <Image
+            src={author.image}
+            alt={author.name}
+            loading="lazy"
+            width={150}
+            height={150}
+            class="w-full h-full object-cover rounded-full"
+            title={author.name}
+          />
+        )
+      }
     </div>
     <div>
       <div>

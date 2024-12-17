@@ -1,6 +1,7 @@
 ---
 import Container from "@components/container.astro";
 import Link from "./ui/link.astro";
+import { Image } from "astro:assets";
 
 interface Menu {
   label: string;
@@ -54,7 +55,11 @@ const mobilemenu: Menu[] = [...leftmenu, ...rightmenu];
           leftmenu.map((item) => (
             <ul>
               <li>
-                <Link href={item.href} style="underline" size="unset">
+                <Link
+                  href={item.href}
+                  style="underline"
+                  size="unset"
+                  title={item.label}>
                   {item.label}
                 </Link>
               </li>
@@ -65,11 +70,27 @@ const mobilemenu: Menu[] = [...leftmenu, ...rightmenu];
 
       <li class="flex items-center justify-between w-full md:w-auto">
         <a class="w-28 dark:hidden" href="/">
-          <img src="/logo.svg" alt="Logo" />
+          <Image
+            src="/logo.svg"
+            alt="Logo"
+            title="Codingly"
+            width="250"
+            height="150"
+            loading="eager"
+            class="w-full"
+          />
         </a>
 
         <a class="hidden w-28 dark:block" href="/">
-          <img src="/logo-dark.svg" alt="Logo" />
+          <Image
+            src="/logo-dark.svg"
+            alt="Logo"
+            title="Codingly"
+            width="250"
+            height="150"
+            loading="eager"
+            class="w-full"
+          />
         </a>
 
         <button
@@ -102,7 +123,11 @@ const mobilemenu: Menu[] = [...leftmenu, ...rightmenu];
           rightmenu.map((item) => (
             <ul>
               <li>
-                <Link href={item.href} style="underline" size="unset">
+                <Link
+                  href={item.href}
+                  style="underline"
+                  size="unset"
+                  title={item.label}>
                   {item.label}
                 </Link>
               </li>
@@ -122,7 +147,8 @@ const mobilemenu: Menu[] = [...leftmenu, ...rightmenu];
                 href={item.href}
                 class=" font-medium text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-purple-500"
                 target={item.external ? "_blank" : ""}
-                rel={item.external ? "noopener" : ""}>
+                rel={item.external ? "noopener" : ""}
+                title={item.label}>
                 {item.label}
               </a>
             </li>

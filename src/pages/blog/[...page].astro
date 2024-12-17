@@ -5,12 +5,6 @@ import Pagination from "@components/pagination.astro";
 import Postlist from "@components/postlist.astro";
 import Layout from "@layouts/Layout.astro";
 import { latestPosts } from "@utils/content";
-// Use Astro.glob() to fetch all posts, and then sort them by date.
-// const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
-//   (a, b) =>
-//     new Date(b.frontmatter.publishDate).valueOf() -
-//     new Date(a.frontmatter.publishDate).valueOf()
-// );
 
 export async function getStaticPaths({ paginate }) {
   return paginate(latestPosts, {

@@ -2,14 +2,15 @@
 import Authorcard from "@components/authorcard.astro";
 import Container from "@components/container.astro";
 import Label from "@components/ui/label.astro";
-import  authors from "@data/authors.json";
-import  categories  from "@data/categories.json";
+import authors from "@data/authors.json";
+import categories from "@data/categories.json";
 import Layout from "@layouts/Layout.astro";
 import { getFormattedDate } from "@utils/all";
 import { CollectionEntry, getCollection } from "astro:content";
 
 import type { Props as Author } from "@data/author-types";
 import type { Props as Category } from "@data/category-types";
+import { Image } from "astro:assets";
 
 type Props = CollectionEntry<"blog">;
 
@@ -35,11 +36,15 @@ const category = categories.find(
 <Layout
   title={post.data.title}
   desc={post.data.excerpt}
-  ogimage={post.data.image}>
+  ogimage={post.data.image}
+  frontmatter={post.data}
+  type="article">
   <Container>
     <div class="max-w-screen-md mx-auto">
       <div class="text-center">
-        <a href={`/category/${category.slug}`}>
+        <a
+          href={`/category/${category.slug}`}
+          title="View all posts in this category">
           <Label theme={category.color}>{category.title}</Label>
         </a>
       </div>
@@ -54,18 +59,23 @@ const category = categories.find(
           <div class="relative flex-shrink-0 w-10 h-10">
             {
               author.image && (
-                <img
+                <Image
                   src={author.image}
-                  alt="Author Photo"
-                  loading="lazy"
+                  width={40}
+                  height={40}
+                  alt={author.name}
+                  loading="eager"
                   class="w-full h-full object-cover rounded-full"
+                  title={author.name}
                 />
               )
             }
           </div>
 
           <div>
-            <a href={`/author/${author.slug}`}>
+            <a
+              href={`/author/${author.slug}`}
+              title={`View all posts by ${author.name}`}>
               <p class="text-gray-800 dark:text-gray-400">
                 {author.name}
               </p>
@@ -91,13 +101,14 @@ const category = categories.find(
     class="relative z-0 max-w-screen-lg mx-auto overflow-hidden lg:rounded-lg aspect-video">
     {
       post.data.image && (
-        <img
+        <Image
           src={post.data.image}
           width={1024}
           height={576}
-          alt="Thumbnail"
+          alt={post.data.title}
           loading="eager"
           class="w-full"
+          title={post.data.title}
         />
       )
     }
@@ -121,7 +132,8 @@ const category = categories.find(
       <div class="flex justify-center mt-7 mb-7">
         <a
           href="/blog"
-          class="px-5 py-3 text-sm text-blue-600 transition rounded-md dark:text-purple-500 bg-purple-50 hover:bg-blue-200 dark:hover:bg-purple-200">
+          class="px-5 py-3 text-sm text-blue-600 transition rounded-md dark:text-purple-500 bg-purple-50 hover:bg-blue-200 dark:hover:bg-purple-200"
+          title="View all posts">
           ← View all posts
         </a>
       </div>

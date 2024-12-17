@@ -9,17 +9,62 @@ export interface Props {
   title?: string;
   desc?: string;
   ogimage?: string;
+  frontmatter?: {
+    title: string;
+    excerpt: string;
+    publishDate: string;
+    author: string;
+    tags: string[];
+    category: string;
+  };
+  type?: "article" | "website";
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 
-const { title, desc, ogimage = "/opengraph.jpg" } = Astro.props;
+const {
+  title,
+  desc,
+  ogimage = "/opengraph.jpg",
+  frontmatter,
+  type = "website",
+} = Astro.props;
 
 const resolvedOGImage = checkImageUrl(ogimage, Astro.site);
 
 const makeTitle = title
   ? title + " | " + "Codingly"
   : "Codingly — Blog for Developers";
+
+// Create schema markup for articles
+const schema = frontmatter
+  ? {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: frontmatter.title,
+      description: frontmatter.excerpt,
+      image: resolvedOGImage,
+      datePublished: frontmatter.publishDate,
+      author: {
+        "@type": "Person",
+        name: frontmatter.author,
+      },
+      keywords: frontmatter.tags.join(","),
+      publisher: {
+        "@type": "Organization",
+        name: "Codingly",
+        logo: {
+          "@type": "ImageObject",
+          url: `${Astro.site}favicon.svg`,
+        },
+      },
+    }
+  : {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: "Codingly",
+      url: Astro.site,
+    };
 ---
 
 <!doctype html>
@@ -29,13 +74,16 @@ const makeTitle = title
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    <meta
+      name="keywords"
+      content="web development, programming, software engineering, coding"
+    />
 
     <SEO
       title={makeTitle}
       description={desc ||
         "Codingly is a blog for developers. We write about web development, programming, and software engineering."}
       canonical={canonicalURL}
-      keywords={["blog", "web development", "coding", "programming"]}
       twitter={{
         creator: "@stekatag",
         site: "@stekatag",
@@ -44,15 +92,25 @@ const makeTitle = title
       openGraph={{
         basic: {
           url: canonicalURL,
-          type: "website",
-          title: `Codingly is a blog for developers`,
+          type: type,
+          title: makeTitle,
           image: resolvedOGImage,
         },
+        article: frontmatter
+          ? {
+              publishedTime: frontmatter.publishDate,
+              authors: [frontmatter.author],
+              section: frontmatter.category,
+              tags: frontmatter.tags,
+            }
+          : undefined,
         image: {
           alt: "Codingly screenshot",
         },
       }}
     />
+
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
   </head>
   <body>
     <Navbar />

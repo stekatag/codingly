@@ -5,18 +5,14 @@ import Link from "@components/ui/link.astro";
 import CategoryPosts from "@components/categoryposts.astro";
 import Layout from "@layouts/Layout.astro";
 import { latestPosts } from "@utils/content";
+import profileImage from "/public/authors/stefan.webp";
 import categories from "@data/categories.json";
-import stefanLogo from "/public/authors/stefan.webp";
-// Use Astro.glob() to fetch all posts, and then sort them by date.
-// const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
-//   (a, b) =>
-//     new Date(b.frontmatter.publishDate).valueOf() -
-//     new Date(a.frontmatter.publishDate).valueOf()
-// );
-// console.log(posts[0].frontmatter.image);
+import { Image } from "astro:assets";
 ---
 
-<Layout title="">
+<Layout
+  title="Home"
+  desc="Welcome to Codingly blog. I'm Stefan, a web developer enthusiast and photographer.">
   <Container>
     <header>
       <div
@@ -40,11 +36,13 @@ import stefanLogo from "/public/authors/stefan.webp";
         </div>
 
         <figure>
-          <img
-            src={stefanLogo.src}
-            alt="Stefan's profile picture"
+          <Image
+            src={profileImage}
+            alt="Stefan Gogov"
             width={300}
             height={300}
+            title="Stefan Gogov"
+            loading="eager"
             class="rounded-full shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px]"
           />
         </figure>
@@ -77,7 +75,8 @@ import stefanLogo from "/public/authors/stefan.webp";
         <div class="flex justify-center mt-7 mb-7">
           <a
             href="/blog"
-            class="px-5 py-3 text-sm text-blue-600 transition rounded-md dark:text-purple-500 bg-purple-50 hover:bg-blue-200 dark:hover:bg-purple-200">
+            class="px-5 py-3 text-sm text-blue-600 transition rounded-md dark:text-purple-500 bg-purple-50 hover:bg-blue-200 dark:hover:bg-purple-200"
+            title="View all posts">
             ← View all posts
           </a>
         </div>
