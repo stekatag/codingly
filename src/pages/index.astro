@@ -29,16 +29,18 @@ import { Icon } from "astro-icon/components";
             Welcome to my blog. I'm a web developer enthusiast and photographer.
           </p>
           <nav
-            class="flex flex-wrap mt-8 space-x-3"
+            class="flex flex-col gap-5 mt-5 w-full items-center sm:w-auto lg:flex-row lg:justify-center lg:gap-3"
             aria-label="Call to action Navigation">
-            <Link href="/blog" class="flex items-center space-x-1.5">
+            <Link
+              href="/blog"
+              class="w-full sm:w-auto flex items-center justify-center space-x-1.5">
               <Icon name="mdi:post" class="dark:text-zinc-800 text-zinc-100" />
               <span>Blog</span>
             </Link>
             <Link
               href="/about"
               style="outline"
-              class="flex items-center space-x-1">
+              class="w-full sm:w-auto flex items-center justify-center space-x-1">
               <Icon
                 name="mdi:account"
                 class="dark:text-zinc-100 text-zinc-800"
@@ -49,7 +51,7 @@ import { Icon } from "astro-icon/components";
               href="https://github.com/stekatag"
               target="_blank"
               style="outline"
-              class="flex items-center space-x-1.5">
+              class="w-full sm:w-auto flex items-center justify-center space-x-1.5">
               <Icon
                 name="mdi:github"
                 class="dark:text-zinc-100 text-zinc-800"
