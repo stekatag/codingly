@@ -7,7 +7,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        gray: colors.neutral,
+        zinc: colors.neutral,
+        "brand-primary": colors.zinc[900],
+      },
+      backgroundColor: {
+        primary: colors.zinc[50],
+        dark: colors.zinc[900],
       },
       fontFamily: {
         sans: ["InterVariable", "Inter", ...defaultTheme.fontFamily.sans],

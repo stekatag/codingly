@@ -20,7 +20,7 @@ const category = categories.find(
 <article class="cursor-pointer group">
   <div
     class={cx(
-      "relative overflow-hidden transition-all bg-gray-100 rounded-md dark:bg-gray-800 hover:scale-105",
+      "relative overflow-hidden transition-all bg-zinc-100 rounded-md dark:bg-zinc-800 hover:scale-105",
       aspect === "landscape" ? "aspect-4/3" : "aspect-1/1"
     )}>
     <a href={"/blog/" + post.slug}>
@@ -36,7 +36,7 @@ const category = categories.find(
             title={post.data.title}
           />
         ) : (
-          <span class="absolute w-16 h-16 text-gray-200 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+          <span class="absolute w-16 h-16 text-zinc-200 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
             <Icon
               class="w-4 h-4 text-black"
               name="heroicons-outline:photograph"
@@ -65,7 +65,7 @@ const category = categories.find(
   <div class="hidden">
     {
       post.data.excerpt && (
-        <p class="mt-2 text-sm text-gray-500 dark:text-gray-400 line-clamp-3">
+        <p class="mt-2 text-sm text-zinc-500 dark:text-zinc-400 line-clamp-3">
           <a href={"/blog/" + post.slug} title={post.data.title}>
             {post.data.excerpt}
           </a>
@@ -75,7 +75,7 @@ const category = categories.find(
   </div>
 
   <div
-    class="flex items-center mt-3 space-x-3 text-gray-500 dark:text-gray-400">
+    class="flex items-center mt-3 space-x-3 text-zinc-500 dark:text-zinc-400">
     <div class="flex items-center gap-3">
       <div class="relative flex-shrink-0 w-5 h-5">
         {
@@ -98,7 +98,7 @@ const category = categories.find(
         <span class="text-sm">{author.name}</span>
       </a>
     </div>
-    <span class="text-xs text-gray-300 dark:text-gray-600"> &bull;</span>
+    <span class="text-xs text-zinc-300 dark:text-zinc-600"> &bull;</span>
     <time class="text-sm" datetime={post.data.publishDate}>
       {getFormattedDate(post.data.publishDate)}
     </time>

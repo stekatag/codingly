@@ -6,7 +6,11 @@ import { ThemeSwitch } from "astro-color-scheme";
 <ThemeSwitch strategy="select" defaultTheme="dark">
   <div class="inline-flex items-center">
     <Icon class="w-4 h-4 mr-2" name="heroicons-outline:sun" />
-    <select name="themeSwitch" id="themeSwitch" title="Change theme">
+    <select
+      name="themeSwitch"
+      id="themeSwitch"
+      title="Change theme"
+      class="bg-primary dark:bg-dark">
       <option value="system">System</option>
       <option value="dark">Dark</option>
       <option value="light">Light</option>
