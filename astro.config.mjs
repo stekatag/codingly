@@ -8,7 +8,7 @@ import { remarkReadingTime } from "./src/utils/all";
 import rehypePluginImageNativeLazyLoading from "rehype-plugin-image-native-lazy-loading";
 
 export default defineConfig({
-  site: "https://codingly.netlify.app/",
+  site: "https://codingly.netlify.app",
   markdown: {
     remarkPlugins: [remarkReadingTime],
     rehypePlugins: [rehypePluginImageNativeLazyLoading],
@@ -18,7 +18,15 @@ export default defineConfig({
     tailwind(),
     mdx(),
     sitemap({
-      filter: (page) => page !== "https://codingly.netlify.app/admin/",
+      filter: (page) => page !== "https://codingly.netlify.app/admin",
+      changefreq: "weekly",
+      priority: 0.7,
+      lastmod: new Date(),
+      customPages: [
+        "https://codingly.netlify.app/blog",
+        "https://codingly.netlify.app/about",
+        "https://codingly.netlify.app/contact",
+      ],
     }),
     icon(),
   ],
