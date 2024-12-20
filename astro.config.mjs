@@ -14,5 +14,12 @@ export default defineConfig({
     rehypePlugins: [rehypePluginImageNativeLazyLoading],
     extendDefaultPlugins: true,
   },
-  integrations: [tailwind(), mdx(), sitemap(), icon()],
+  integrations: [
+    tailwind(),
+    mdx(),
+    sitemap({
+      filter: (page) => page !== "https://codingly.netlify.app/admin/",
+    }),
+    icon(),
+  ],
 });

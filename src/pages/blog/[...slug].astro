@@ -123,7 +123,9 @@ const category = categories.find(
         <div class="flex flex-wrap items-center w-full gap-3 md:w-auto">
           {
             post.data.tags.map((tag) => (
-              <span class="text-sm text-zinc-500">#{tag}</span>
+              <span class="text-sm text-zinc-500">
+                <strong>#{tag}</strong>
+              </span>
             ))
           }
         </div>
