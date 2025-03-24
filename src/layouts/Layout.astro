@@ -70,6 +70,26 @@ const schema = frontmatter
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Theme script - must be in the head and inline -->
+    <script is:inline>
+      // Immediately apply the saved theme to prevent flash
+      const savedTheme = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+
+      // Handle all three cases: dark, light, and system
+      if (
+        savedTheme === "dark" ||
+        (savedTheme === "system" && prefersDark) ||
+        (!savedTheme && prefersDark)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
