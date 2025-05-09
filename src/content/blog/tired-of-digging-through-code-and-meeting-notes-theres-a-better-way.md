@@ -5,7 +5,7 @@ excerpt: Struggling to understand code changes or remember meeting details? This
   repositories and meeting recordings with ease. Learn how it can save you time
   and provide valuable insights.
 publishDate: 2025-03-24T21:27:00+02:00
-image: /assets/firefox_o1w2twfcha.png
+image: /assets/223.png
 category: ai
 author: stefan-gogov
 tags:
