@@ -134,40 +134,11 @@ const schema = frontmatter
 
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
   </head>
-  <body class="bg-primary dark:bg-brand-primary">
+  <body
+    class="bg-primary dark:bg-brand-primary transition-colors duration-200 text-gray-600 dark:text-gray-400">
     <Navbar />
     <slot />
     <Footer />
-    <style is:global>
-      @reference "tailwindcss";
-
-      /* Improve Page speed */
-      /* https://css-tricks.com/almanac/properties/c/content-visibility/ */
-      img {
-        content-visibility: auto;
-      }
-
-      :root {
-        color-scheme: light dark;
-      }
-
-      body {
-        @apply transition-colors duration-200 text-gray-600 dark:text-gray-400;
-      }
-
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        @apply text-gray-900 dark:text-white;
-      }
-
-      ::selection {
-        @apply bg-blue-500 text-white dark:bg-purple-500;
-      }
-    </style>
     <script>
       declare global {
         interface Window {
