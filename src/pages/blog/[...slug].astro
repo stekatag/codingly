@@ -40,7 +40,7 @@ const category = categories.find(
   frontmatter={post.data}
   type="article">
   <Container>
-    <div class="max-w-screen-md mx-auto">
+    <div class="max-w-(--breakpoint-md) mx-auto">
       <div class="text-center">
         <a
           href={`/category/${category.slug}`}
@@ -56,7 +56,7 @@ const category = categories.find(
 
       <div class="flex justify-center mt-3 space-x-3 text-zinc-500">
         <div class="flex items-center gap-3">
-          <div class="relative flex-shrink-0 w-10 h-10">
+          <div class="relative shrink-0 w-10 h-10">
             {
               author.image && (
                 <Image
@@ -98,7 +98,7 @@ const category = categories.find(
   </Container>
 
   <div
-    class="relative z-0 max-w-screen-lg mx-auto overflow-hidden lg:rounded-lg">
+    class="relative z-0 max-w-(--breakpoint-lg) mx-auto overflow-hidden lg:rounded-lg">
     {
       post.data.image && (
         <Image
@@ -115,7 +115,7 @@ const category = categories.find(
   </div>
 
   <Container>
-    <article class="max-w-screen-md mx-auto">
+    <article class="max-w-(--breakpoint-md) mx-auto">
       <div
         class="mx-auto my-3 prose prose-base dark:prose-invert prose-a:text-blue-600">
         <Content />
