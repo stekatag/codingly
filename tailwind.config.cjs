@@ -1,9 +1,7 @@
 /** @type {import('tailwindcss').Config} */
-import colors from "tailwindcss/colors";
-import defaultTheme from "tailwindcss/defaultTheme";
-import typography from "@tailwindcss/typography";
-
-export default {
+const colors = require("tailwindcss/colors");
+const defaultTheme = require("tailwindcss/defaultTheme");
+module.exports = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   darkMode: "class",
   theme: {
@@ -29,5 +27,5 @@ export default {
       },
     },
   },
-  plugins: [typography],
+  plugins: [require("@tailwindcss/typography")],
 };
