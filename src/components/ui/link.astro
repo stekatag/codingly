@@ -48,19 +48,17 @@ const styles = {
   ><slot />
 </a>
 
-<style type="text/tailwindcss">
-  @tailwind utilities;
+<style>
+  @reference "tailwindcss";
 
-  @layer utilities {
-    .nav-link {
-      @apply relative my-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-300;
-    }
-    .nav-link::after {
-      @apply content-[''] bg-blue-500 h-[3.5px] w-[0%] left-0 -bottom-[6px] rounded-md absolute duration-300;
-    }
+  .nav-link {
+    @apply relative my-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-300;
+  }
+  .nav-link::after {
+    @apply content-[''] bg-blue-500 h-[3.5px] w-[0%] left-0 -bottom-[6px] rounded-md absolute duration-300;
+  }
 
-    .nav-link:hover::after {
-      @apply w-[100%];
-    }
+  .nav-link:hover::after {
+    @apply w-[100%];
   }
 </style>

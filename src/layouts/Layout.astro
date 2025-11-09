@@ -2,6 +2,7 @@
 import Footer from "@components/footer.astro";
 import Navbar from "@components/navbar.astro";
 import "@fontsource/inter";
+import "@styles/globals.css";
 import { checkImageUrl } from "@utils/all";
 import { SEO } from "astro-seo";
 
@@ -138,6 +139,8 @@ const schema = frontmatter
     <slot />
     <Footer />
     <style is:global>
+      @reference "tailwindcss";
+      
       /* Improve Page speed */
       /* https://css-tricks.com/almanac/properties/c/content-visibility/ */
       img {
