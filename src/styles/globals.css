@@ -1,2 +1,19 @@
 @import "tailwindcss";
-@config "../../tailwind.config.cjs";
+
+@theme {
+  /* Custom colors */
+  --color-brand-primary: #18181b; /* zinc-900 */
+  --color-primary: #fafafa; /* zinc-50 for light bg */
+  --color-dark: #18181b; /* zinc-900 for dark bg */
+  
+  /* Font family */
+  --font-sans: "InterVariable", "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  
+  /* Aspect ratios */
+  --aspect-ratio-16\/9: 16 / 9;
+  --aspect-ratio-1\/1: 1 / 1;
+  --aspect-ratio-4\/3: 4 / 3;
+  --aspect-ratio-3\/2: 3 / 2;
+  --aspect-ratio-2\/3: 2 / 3;
+  --aspect-ratio-9\/16: 9 / 16;
+}
